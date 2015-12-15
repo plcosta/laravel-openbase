@@ -1,0 +1,30 @@
+{
+    "name": "plcosta/openbase",
+    "description": "Openbase (OpenSQL) driver for Laravel 5",
+    "keywords": ["openbase", "laravel", "laravel 5", "pdo_open"],
+    "license": "MIT",
+    "authors": [
+        {
+          "name": "Pedro Costa",
+          "email": "pedro@plcosta.com"
+        }
+    ],
+    "require": {
+      "php": ">=5.5.9",
+      "illuminate/support": "5.1.*",
+      "illuminate/database": "5.1.*",
+      "illuminate/pagination": "5.1.*"
+    },
+    "require-dev": {
+      "fzaninotto/faker": "~1.4",
+      "mockery/mockery": "0.9.*",
+      "phpunit/phpunit": "~4.0",
+      "phpspec/phpspec": "~2.1"
+    },
+    "autoload": {
+      "psr-4": {
+        "Plcosta\\": "src/Plcosta"
+      }
+    },
+    "minimum-stability": "stable"
+}
