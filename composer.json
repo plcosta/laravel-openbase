@@ -1,5 +1,5 @@
 {
-    "name": "plcosta/openbase",
+    "name": "plcosta/laravel-openbase",
     "description": "Openbase (OpenSQL) driver for Laravel 5",
     "keywords": ["openbase", "laravel", "laravel 5", "pdo_open"],
     "license": "MIT",
