@@ -2,18 +2,12 @@
 
 ### OpenBase (updated for 5.1)
 
-[![Latest Stable Version](https://poser.pugx.org/jfelder/oracledb/v/stable.png)](https://packagist.org/packages/jfelder/oracledb) [![Total Downloads](https://poser.pugx.org/jfelder/oracledb/downloads.png)](https://packagist.org/packages/jfelder/oracledb) [![Build Status](https://travis-ci.org/jfelder/Laravel-OracleDB.png)](https://travis-ci.org/jfelder/Laravel-OracleDB) [![SensioLabsInsight](https://insight.sensiolabs.com/projects/5ab2ec12-1622-4cb6-8ff0-238d0ec4028f/mini.png)](https://insight.sensiolabs.com/projects/5ab2ec12-1622-4cb6-8ff0-238d0ec4028f) [![StyleCI](https://styleci.io/repos/10234767/shield)](https://styleci.io/repos/10234767)
-
 Openbase is an Openbase Database Driver package for [Laravel Framework](http://laravel.com/). Thanks OpenBase Sistemas (http://www.openbase.com.br)
 
 **Please report any bugs you may find.**
 
 - [Installation](#installation)
 - [Basic Usage](#basic-usage)
-- [Query Builder](#query-builder)
-- [Eloquent](#eloquent)
-- [Schema](#schema)
-- [Migrations](#migrations)
 - [License](#license)
 
 ### Installation
