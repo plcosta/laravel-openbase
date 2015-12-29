@@ -1,6 +1,6 @@
 ## Laravel Openbase (OpenSQL) Database Package
 
-### OpenBase (updated for 5.1)
+### Laravel OpenBase (updated for 5.1)
 
 Openbase is an Openbase Database Driver package for [Laravel Framework](http://laravel.com/). Thanks OpenBase Sistemas (http://www.openbase.com.br)
 
@@ -10,7 +10,7 @@ Openbase is an Openbase Database Driver package for [Laravel Framework](http://l
 - [Basic Usage](#basic-usage)
 - [License](#license)
 
-### Installation
+### Installation Guide
 
 Add `plcosta/openbase` as a requirement to composer.json:
 
