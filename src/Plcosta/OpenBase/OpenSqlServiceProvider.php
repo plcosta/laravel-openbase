@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 
 /**
- * Class OracleDBServiceProvider.
+ * Class OpenSQLServiceProvider.
  */
 class OpenSqlServiceProvider extends ServiceProvider
 {
@@ -17,13 +17,8 @@ class OpenSqlServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->publishes(
-            [
-                __DIR__.'/../../config/opensql.php' => config_path('opensql.php'),
-            ]
-        );
-    }
 
+    }
 
     /**
      * Register the service provider.
@@ -32,28 +27,22 @@ class OpenSqlServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if (file_exists(config_path('openbase.php'))) {
-            // merge config with other connections
-            $this->mergeConfigFrom(config_path('openbase.php'), 'database.connections');
+        if (file_exists(config_path('database.php'))) {
 
-            // get only oracle configs to loop thru and extend DB
+            // get only openbase/opensql configs to loop thru and extend DB
             $config = $this->app['config']->get('openbase', []);
 
             $connection_keys = array_keys($config);
 
-//            if (is_array($connection_keys)) {
-//                foreach ($connection_keys as $key) {
             $this->app->resolving('db', function ($db)
             {
-                    $db->extend('openbase', function ($config) {
-                        $Connector = new Connectors\OpenSqlConnector();
+                $db->extend('openbase', function ($config) {
+                    $Connector = new Connectors\OpenSqlConnector();
 
-                        $connection = $Connector->connect($config);
+                    $connection = $Connector->connect($config);
 
-                        return new OpenSqlConnection($connection, $config['path']);
-                    });
-//                }
-//            }
+                    return new OpenSqlConnection($connection, $config['path']);
+                });
             });
         }
     }
