@@ -1,6 +1,6 @@
 <?php
 
-namespace Plcosta\OpenBase\Query\Grammars;
+namespace Plcosta\Openbase\Query\Grammars;
 
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Grammars\Grammar as Grammar;

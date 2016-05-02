@@ -1,6 +1,6 @@
 <?php
 
-namespace Plcosta\OpenBase;
+namespace Plcosta\Openbase;
 
 use Illuminate\Database\Connection;
 use Plcosta\Openbase\Query\Processors\OpenSqlProcessor;

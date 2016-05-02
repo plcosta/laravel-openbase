@@ -1,6 +1,6 @@
 <?php
 
-namespace Plcosta\OpenBase\Connectors;
+namespace Plcosta\Openbase\Connectors;
 
 use Illuminate\Database\Connectors\Connector;
 use Illuminate\Database\Connectors\ConnectorInterface;

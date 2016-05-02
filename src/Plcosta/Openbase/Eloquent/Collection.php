@@ -1,6 +1,6 @@
 <?php
 
-namespace Plcosta\OpenBase\Eloquent;
+namespace Plcosta\Openbase\Eloquent;
 
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 

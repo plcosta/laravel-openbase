@@ -1,6 +1,6 @@
 <?php
 
-namespace Plcosta\OpenBase;
+namespace Plcosta\Openbase;
 
 use Illuminate\Database\Connectors\ConnectionFactory;
 use Illuminate\Database\DatabaseManager;
@@ -23,7 +23,7 @@ class OpenSqlServiceProvider extends ServiceProvider
     /**
      * Register the service provider.
      *
-     * @returns plcosta\OpenBase\OpenSqlConnection
+     * @returns plcosta\Openbase\OpenSqlConnection
      */
     public function register()
     {

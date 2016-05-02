@@ -1,6 +1,6 @@
 <?php
 
-namespace Plcosta\OpenBase\Schema\Grammars;
+namespace Plcosta\Openbase\Schema\Grammars;
 
 use Illuminate\Database\Schema\Grammars\Grammar as Grammar;
 use Illuminate\Support\Fluent;
