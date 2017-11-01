@@ -58,3 +58,7 @@ See [Laravel Database Basic Docs](http://four.laravel.com/docs/database) for mor
 ### License
 
 Licensed under the [MIT License](http://cheeaun.mit-license.org/).
+
+### Todo
+
+- [ ] Update to Laravel 5.5
