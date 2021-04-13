@@ -23,6 +23,11 @@ Add `plcosta/laravel-openbase` as a requirement to composer.json:
 ```
 And then run `composer update`
 
+Or run the following command in your project to get the latest version of the package:
+
+```terminal
+composer require plcosta/laravel-openbase
+```
 Once Composer has installed or updated your packages you need to register OracleDB. Open up `config/app.php` and find
 the `providers` key and add:
 
