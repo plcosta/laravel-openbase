@@ -12,12 +12,12 @@ Openbase is an Openbase Database Driver package for [Laravel Framework](http://l
 
 ### Installation Guide
 
-Add `plcosta/openbase` as a requirement to composer.json:
+Add `plcosta/laravel-openbase` as a requirement to composer.json:
 
 ```json
 {
     "require": {
-        "plcosta/openbase": "0.1.*"
+        "plcosta/laravel-openbase": "0.1.*"
     }
 }
 ```
