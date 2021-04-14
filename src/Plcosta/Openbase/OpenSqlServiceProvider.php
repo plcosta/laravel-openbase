@@ -2,10 +2,14 @@
 
 namespace Plcosta\Openbase;
 
-use Illuminate\Database\Connectors\ConnectionFactory;
-use Illuminate\Database\DatabaseManager;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Connection;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\DatabaseManager;
+use Illuminate\Database\Connectors\ConnectionFactory;
+use Plcosta\Openbase\Connectors\OpenSqlConnector as Connector;
+
+
 
 /**
  * Class OpenSQLServiceProvider.
@@ -31,20 +35,17 @@ class OpenSqlServiceProvider extends ServiceProvider
     {
         if (file_exists(config_path('database.php'))) {
 
-            // get only openbase/opensql configs to loop thru and extend DB
-            $config = $this->app['config']->get('openbase', []);
+            if (file_exists(config_path('openbase.php'))) {
+                $this->mergeConfigFrom(config_path('openbase.php'), 'database.connections');
+            } else {
+                $this->mergeConfigFrom(__DIR__ . '/config/openbase.php', 'database.connections');
+            }
 
-            $connection_keys = array_keys($config);
+            Connection::resolverFor('OpenSQL', function ($connection, $database, $prefix, $config) {
+                $connector = new Connector();
+                $connection = $connector->connect($config);
 
-            $this->app->resolving('db', function ($db)
-            {
-                $db->extend('openbase', function ($config) {
-                    $Connector = new Connectors\OpenSqlConnector();
-
-                    $connection = $Connector->connect($config);
-
-                    return new OpenSqlConnection($connection, $config['path']);
-                });
+                return new OpenSqlConnection($connection, $database, $prefix, $config);
             });
         }
     }

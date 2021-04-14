@@ -11,6 +11,17 @@ use Plcosta\Openbase\Schema\Grammars\OpenSqlGrammar as SchemaGrammar;
 class OpenSqlConnection extends Connection
 {
     /**
+     * @param PDO|\Closure $pdo
+     * @param string       $database
+     * @param string       $tablePrefix
+     * @param array        $config
+     */
+    public function __construct($pdo, $database = '', $tablePrefix = '', array $config = [])
+    {
+        parent::__construct($pdo, $database, $tablePrefix, $config);
+        
+    }
+    /**
      * Get the default query grammar instance.
      *
      * @return \Plcosta\Openbase\Query\Grammars\OpenSqlGrammar

@@ -18,21 +18,21 @@ class OpenSqlConnector extends Connector implements ConnectorInterface
         return 'pdo_open';
     }
 
-    /**
-     * Constructs the sql PDO DSN.
-     *
-     * @param array $params
-     *
-     * @return string The DSN.
-     */
-    protected function pdoDsn(array $params)
-    {
-        $dsn = 'OpenSQL:';
-        if (isset($params['path'])) {
-            $dsn .= $params['path'];
-        }
-        return $dsn;
-    }
+    // /**
+    //  * Constructs the sql PDO DSN.
+    //  *
+    //  * @param array $config
+    //  *
+    //  * @return string The DSN.
+    //  */
+    // protected function pdoDsn(array $config)
+    // {
+    //     $dsn = 'OpenSQL:';
+    //     if (isset($config['path'])) {
+    //         $dsn .= $config['path'];
+    //     }
+    //     return $this->getDsn($config);
+    // }
 
     /**
      * Create a new PDO connection.
@@ -44,6 +44,10 @@ class OpenSqlConnector extends Connector implements ConnectorInterface
      */
     public function createConnection($dsn, array $config, array $options)
     {
+        // add fallback in case driver is not set, will use pdo instead
+        if (! in_array($config['driver'], ['php_open'])) {
+            return parent::createConnection($dsn, $config, $options);
+        }
         return parent::createConnection($dsn, $config, $options);
     }
 
@@ -57,10 +61,100 @@ class OpenSqlConnector extends Connector implements ConnectorInterface
      */
     public function connect(array $config)
     {
+        $dsn = !empty($config['dns']) ? $config['dns'] : $this->getDsn($config);
+
         $options = $this->getOptions($config);
 
-        $path = $config['path'];
 
-        return $this->createConnection("OpenSQL:{$path}", $config, $options);
+        return $this->createConnection($dsn, $config, $options);
     }
+
+    /**
+     * Create a DSN string from a configuration.
+     *
+     * @param  array $config
+     * @return string
+     */
+    protected function getDsn(array $config)
+    {
+        if (!empty($config['dns'])) {
+            return $config['dns'];
+        }
+
+        // parse configuration
+        $config = $this->parseConfig($config);
+
+        $config['dsn'] = "OpenSQL:HST=$config[host];DSN=$config[database];SEC=$config[username];LEV=$config[username]";
+
+        // return generated dns
+        return $config['dsn'];
+    }
+    /**
+     * Parse configurations.
+     *
+     * @param array $config
+     * @return array
+     */
+    protected function parseConfig(array $config)
+    {
+        $config = $this->setHost($config);
+        $config = $this->setDatabase($config);
+        $config = $this->setUsername($config);
+        $config = $this->setPassword($config);
+
+        return $config;
+    }
+    /**
+     * Set host from config.
+     *
+     * @param array $config
+     * @return array
+     */
+    protected function setHost(array $config)
+    {
+        $config['hst'] = isset($config['hst']) ? $config['hst'] : '127.0.0.1';
+        $config['host'] = isset($config['host']) ? $config['host'] : $config['hst'];
+
+        return $config;
+    }
+    /**
+     * Set host from config.
+     *
+     * @param array $config
+     * @return array
+     */
+    protected function setDatabase(array $config)
+    {
+        $config['database'] = isset($config['database']) ? $config['database'] : '';
+
+        return $config;
+    }
+    /**
+     * Set host from config.
+     *
+     * @param array $config
+     * @return array
+     */
+    protected function setUsername(array $config)
+    {
+        $config['sec'] = isset($config['sec']) ? $config['sec'] : '1';
+        $config['username'] = isset($config['username']) ? $config['username'] : $config['sec'];
+
+        return $config;
+    }
+    /**
+     * Set host from config.
+     *
+     * @param array $config
+     * @return array
+     */
+    protected function setPassword(array $config)
+    {
+        $config['lev'] = isset($config['lev']) ? $config['lev'] : 'a';
+        $config['password'] = isset($config['password']) ? $config['password'] : $config['lev'];
+
+        return $config;
+    }
+
+    
 }
