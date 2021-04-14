@@ -17,7 +17,9 @@ class OpenSqlServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        $this->publishes([
+            __DIR__ . '/config/openbase.php' => config_path('openbase.php'),
+        ], 'openbase');
     }
 
     /**
