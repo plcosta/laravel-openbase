@@ -38,7 +38,7 @@ Plcosta\Openbase\OpenSqlServiceProvider::class,
 Finally you need to publish a configuration file by running the following Artisan command.
 
 ```terminal
-$ php artisan vendor:publish
+php artisan vendor:publish --tag=openbase
 ```
 This will copy the configuration file to config/openbase.php
 
