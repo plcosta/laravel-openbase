@@ -12,17 +12,22 @@ Openbase is an Openbase Database Driver package for [Laravel Framework](http://l
 
 ### Installation Guide
 
-Add `plcosta/openbase` as a requirement to composer.json:
+Add `plcosta/laravel-openbase` as a requirement to composer.json:
 
 ```json
 {
     "require": {
-        "plcosta/openbase": "0.1.*"
+        "plcosta/laravel-openbase": "0.1.*"
     }
 }
 ```
 And then run `composer update`
 
+Or run the following command in your project to get the latest version of the package:
+
+```terminal
+composer require plcosta/laravel-openbase
+```
 Once Composer has installed or updated your packages you need to register OracleDB. Open up `config/app.php` and find
 the `providers` key and add:
 
@@ -33,7 +38,7 @@ Plcosta\Openbase\OpenSqlServiceProvider::class,
 Finally you need to publish a configuration file by running the following Artisan command.
 
 ```terminal
-$ php artisan vendor:publish
+php artisan vendor:publish --tag=openbase
 ```
 This will copy the configuration file to config/openbase.php
 
